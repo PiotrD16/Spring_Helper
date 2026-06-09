@@ -2,6 +2,13 @@
 
 ## Część 1: Hibernate & JPA (Warstwa Persystencji)
 
+W klasycznym podejściu (używając samej Javy) dane są przechowywane w różncy kolekcjach, np. w mapach. Jest to bardzo proste i z reguły dosyć efektywne rozwiązanie (np. kiedy wykorzystujemy HashMapy) podczas wykonywania operacji na danym zbiorze. Podejście to ma jeden podstawowy problem: dane te przechowywane są w pamięci RAM więc istnieją tak długo jak uruchomiona jest aplikacja. Po zakończeniu działania apki wszystko jest kasowane z pamięci. Kiepska sprawa zwłaszcza jeśli chcemy żeby dane były dostępne powiedzmy w każdej chwili. W tym celu wykorzystuje się narzędzia, które umożliwiają kontakt naszej aplikacji z bazą danych, w której dane są długożyjące. Do ustanawiania takiego połączenia wykorzystuje się **JDBC**.
+
+**JDBC** to interfejs który stanowi most pomiędzy naszą aplikacją a bazą danych (np. MySQL, PostgreSQL). Jego podstawowym zadaniem jest ustanawianie połączenia między bazą danych, wykonywanie zapytań, przetwarzanie wyników. Warto wspomnieć, że zapytania są pisane ręcznie i może to być niewygodne na dłuższą metę i może to być niebezpieczne w sytuacji, gdy baza danych zmieni strukturę: wtedy trzeba również zmienić te zapytania w naszym kodzie Javy. Ponadto jeśli popełnimy gdzieś literówkę to całe zapytanie się nie wykona, dostaniemy wyjątek i będziemy musieli modyfikować kwerendę co jest mało wygodne.
+Aby zniwelować ten problem wprowadzono **JPA (Jakarta Persistence API)** która jest warstwą abstrakcji lub też interfejsem którego zadaniem jest "dostarczenie" informacji, w jaki sposób możemy nawiązywać połącznie z bazą danych, jak zamieniać tabele baz danych na klasy i na odwrót, jednak brakuje implementacji tych funkcjonalności. Ma to sens, ponieważ dzięki takiemu podejściu łatwo jest utworzyć własne sposoby na interakcję z DB. Przykładem implementacji JPA jest **Hibernate**.
+
+Najprościej mówiąc, Hibernate jest konkretną, gotową do użycia implementacją JPA która umożlwia mapowanie klas Javy (POJO) na tabele w bazie danych (ORM). Jest to bardzo wygodne, ponieważ możemy zarządzać bazą danych i jej tabelami jak zwykłymi klasami Javy. Hibernate jest potężnym narzędziem o wielu ciekawych funkcjonalnościach, jednak najpierw warto wiedzieć na jakiej zasadzie on działa.
+
 ### 1. Mapowanie encji
 
 @Entity
