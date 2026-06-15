@@ -1,4 +1,4 @@
-### Spring Security
+# Spring Security
 Jak wiadomo, każda aplikacja musi posiadać usługi zapewniające bezpieczeństwo oraz ograniczać dostęp do danych zasobów dla konkretnych użytkowników (np. nie możemy dodać posta lub znajomego na Facebooku jeśli nie jesteśmy zalogowani). Aby realizować podobne funkcjonalności w Springu, wykorzystujemy __Spring Security__.
 
 Najpierw przyjrzyjmy się drodze jaką pokonuje _request_ zanim dotrze na serwer:
